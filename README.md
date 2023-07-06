@@ -40,3 +40,7 @@
 - Stage admin
 - District admin
 - Portal admin
+
+## Plan
+
+Adminstration levels will be adjusted using django admin area

@@ -31,8 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'accounts',
     'kaliroboda',
+    'accounts.apps.AccountsConfig',
+    'locations.apps.LocationsConfig',
     'django.contrib.auth',
     'django.contrib.admin',
     'django.contrib.sessions',
@@ -85,6 +86,7 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
+AUTH_USER_MODEL = 'accounts.User'
 
 AUTH_PASSWORD_VALIDATORS = [
     {

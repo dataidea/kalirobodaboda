@@ -7,5 +7,8 @@ def signin(request):
 def signup(request):
     return render(request=request, template_name='accounts/signup.html', context={})
 
-def forgot_password(request):
+def forgotPassword(request):
     return render(request=request, template_name='accounts/forgot_password.html', context={})
+
+def memberTable(request):
+    return render(request=request, template_name='accounts/member_table.html')

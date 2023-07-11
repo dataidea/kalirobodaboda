@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-%)8vbtw_3#c!=&73v*2)3u$csc0__l=nj+(g7k_93z5%9o*dz!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,6 +76,7 @@ WSGI_APPLICATION = 'kaliroboda.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# sqlite
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -83,6 +84,19 @@ DATABASES = {
     }
 }
 
+# mongodb
+# DATABASE = {
+#     'default': {
+#         'ENGINE': 'djongo',
+#         "CLIENT": {
+#            "name": 'Kaliroboda',
+#            "host": 'mongodb://localhost:27017',
+#         #    "username": 'dataidea',
+#         #    "password": 'Chappie@256',
+#            "authMechanism": "SCRAM-SHA-1",
+#         }, 
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

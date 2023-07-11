@@ -21,11 +21,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
+handler404 = views.pageNotFound
+handler500 = views.serverError
 urlpatterns = [
     path(route='', view=views.home, name='home'),
     path(route='accounts/', view=include('accounts.urls')),
     path(route='admin/', view=admin.site.urls),
-    path(route='dashbord/', view=views.dashbord, name='dashbord')
+    path(route='dashbord/', view=views.dashbord, name='dashbord'),
+    path(route='charts', view=views.charts, name='charts')
 ]
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

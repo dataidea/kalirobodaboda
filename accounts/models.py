@@ -6,6 +6,7 @@ from locations.models import Stage
 class User(AbstractUser):
     first_name = models.CharField(max_length=25)
     last_name = models.CharField(max_length=25)
+    email = models.EmailField()
     display_picture = models.ImageField()
 
     REQUIRED_FIELDS = ['first_name', 'last_name']
@@ -21,4 +22,4 @@ class Member(models.Model):
     phone_number = models.CharField(max_length=25)
 
     def __str__(self):
-        return self.user
+        return f'{self.user}'

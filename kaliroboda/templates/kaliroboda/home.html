@@ -1,5 +1,40 @@
 {% extends 'kaliroboda/base.html' %} {% block content %}
 
-<h1 class="text-white">Home</h1>
+<main class="flex flex-col space-y-4 container h-full overflow-y-auto">
+  <!-- Hero section -->
+  <section class="flex flex-col space-y-4">
+    <div class="px-6 mx-auto text-center">
+      <h1 class="my-6 text-3xl font-bold text-gray-700 dark:text-gray-200">
+        Kaliro Boda Association
+      </h1>
+      <h1 class="font-light text-medium text-gray-700 dark:text-gray-200">
+        We offer this kind of serces for Boda men in Kaliro and neigboring
+        places. We also offer Lorem ipsum, dolor sit amet consectetur
+        adipisicing elit. Ipsum, neque.
+      </h1>
+    </div>
+    <div
+      class="flex justify-center space-x-4 container px-6 mx-auto text-center"
+    >
+      <div>
+        <button
+          class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+        >
+          Apply
+        </button>
+      </div>
+      <div>
+        <button
+          class="px-4 py-2 text-sm font-medium leading-5 text-purple-600 transition-colors duration-150 bg-gray-100 border border-purple-600 rounded-lg active:bg-white hover:bg-white focus:outline-none focus:shadow-outline-purple dark:bg-gray-200"
+        >
+          More
+        </button>
+      </div>
+    </div>
+  </section>
+  <section>
+    
+  </section>
+</main>
 
 {% endblock %}

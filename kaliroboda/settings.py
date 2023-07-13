@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     'kaliroboda',
     'accounts.apps.AccountsConfig',
     'locations.apps.LocationsConfig',
-    'livereload',
     'django.contrib.auth',
     'django.contrib.admin',
     'django.contrib.sessions',

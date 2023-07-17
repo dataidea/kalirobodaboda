@@ -1,16 +1,15 @@
+from .models import User
+from django.db.models import Q
 from django.shortcuts import render
 from django.shortcuts import redirect
-from .forms import UserForm
-from django.contrib.auth import authenticate
 from django.contrib.auth import login
 from django.contrib.auth import logout
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.password_validation import validate_password
-from django.contrib.auth.validators import UnicodeUsernameValidator
-from django.db.models import Q
-from .models import User
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth import authenticate
 from django.core.exceptions import ValidationError  
+from django.contrib.auth.hashers import make_password
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.validators import UnicodeUsernameValidator
+from django.contrib.auth.password_validation import validate_password
 
 # Create your views here.
 def signin(request):
@@ -25,9 +24,11 @@ def signin(request):
             return redirect('dashbord')
         else:
             context = {'error': 'Invalid username or password'}
-            return render(request=request, template_name='accounts/signin.html', context=context)
+            template_name = 'accounts/signin.html'
+            return render(request=request, template_name=template_name, context=context)
     else:
-        return render(request=request, template_name='accounts/signin.html', context={})
+        template_name = 'accounts/signin.html'
+        return render(request=request, template_name=template_name, context={})
 
 def validate_signup(username, password, confirm_password):
     error_messages = []
@@ -61,35 +62,45 @@ def signup(request):
 
         if error_messages:
             context = {'error': error_messages}
-            return render(request=request, template_name='accounts/signup.html', context=context)
+            template_name='accounts/signup.html'
+            return render(request=request, template_name=template_name, context=context)
         
         password = make_password(password)
         user = User.objects.create(username=username, first_name=first_name, last_name=last_name, email=email, password=password)
         user.save()
         context = {}
-        return render(request=request, template_name='kaliroboda/dashbord.html', context=context)
+        template_name='kaliroboda/dashbord.html'
+        return render(request=request, template_name=template_name, context=context)
     
     else:
         context = {}
-        return render(request=request, template_name='accounts/signup.html', context=context)
+        template_name='accounts/signup.html'
+        return render(request=request, template_name=template_name, context=context)
 
 def signout(request):
     logout(request)
     return redirect('home')
 
 def profile(request):
-    return render(request=request, template_name='accounts/profile.html', context={})
+    template_name='accounts/profile.html'
+    context={}
+    return render(request=request, template_name=template_name, context=context)
 
 def settings(request):
-    return render(request=request, template_name='accounts/settings.html', context={})
+    template_name='accounts/settings.html'
+    context={}
+    return render(request=request, template_name=template_name, context=context)
 
 def forgotPassword(request):
-    return render(request=request, template_name='accounts/forgot_password.html', context={})
+    context={}
+    template_name='accounts/forgot_password.html'
+    return render(request=request, template_name=template_name, context=context)
 
 def userTable(request):
     users = User.objects.all()
     context = {'users': users}
-    return render(request=request, template_name='accounts/user_table.html',context=context)
+    template_name = 'accounts/user_table.html'
+    return render(request=request, template_name=template_name,context=context)
 
 def userSearch(request):
     query = request.GET.get('query')
@@ -98,6 +109,8 @@ def userSearch(request):
             Q(first_name__icontains=query) | Q(last_name__icontains=query) | Q(email__icontains=query) | Q(username__icontains=query)
         )
         context = {'users': results, 'query': query}
+        template_name='accounts/user_table.html'
     else:
         context = {'users': [], 'query': query}
-    return render(request=request, template_name='accounts/user_table.html', context=context)
+        template_name='accounts/user_table.html'
+    return render(request=request, template_name=template_name, context=context)

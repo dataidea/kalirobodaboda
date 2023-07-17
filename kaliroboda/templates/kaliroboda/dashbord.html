@@ -143,7 +143,7 @@
                   >
                     <img
                       class="object-cover w-full h-full rounded-full"
-                      src="https://images.unsplash.com/photo-1502720705749-871143f0e671?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=b8377ca9f985d80264279f277f3a67f5"
+                      src="{{user.display_picture.url}}"
                       alt=""
                       loading="lazy"
                     />
@@ -156,13 +156,11 @@
                     <p class="font-semibold">
                       {{user.first_name}} {{user.last_name}}
                     </p>
-                    <p class="text-xs text-gray-600 dark:text-gray-400">
-                      Influencer
-                    </p>
+                    <p class="text-xs text-gray-600 dark:text-gray-400">User</p>
                   </div>
                 </div>
               </td>
-              <td class="px-4 py-3 text-sm">$ 863.45</td>
+              <td class="px-4 py-3 text-sm">{{user.id}}</td>
               <td class="px-4 py-3 text-xs">
                 <span
                   class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
@@ -172,7 +170,7 @@
                   {% elif user.is_staff %}
                   <span>Staff</span>
                   {% else %}
-                  <span>Non-member</span>
+                  <span>Other</span>
                   {% endif %}
                 </span>
               </td>

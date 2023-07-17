@@ -84,20 +84,6 @@ DATABASES = {
     }
 }
 
-# mongodb
-# DATABASE = {
-#     'default': {
-#         'ENGINE': 'djongo',
-#         "CLIENT": {
-#            "name": 'Kaliroboda',
-#            "host": 'mongodb://localhost:27017',
-#         #    "username": 'dataidea',
-#         #    "password": 'Chappie@256',
-#            "authMechanism": "SCRAM-SHA-1",
-#         }, 
-#     }
-# }
-
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 AUTH_USER_MODEL = 'accounts.User'

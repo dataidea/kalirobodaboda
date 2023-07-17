@@ -1,39 +1,204 @@
 {% extends 'kaliroboda/base.html' %} {% block content %}
 
-<main class="flex flex-col space-y-4 container h-full overflow-y-auto">
+<main
+  class="flex flex-col space-y-4 container h-full overflow-y-auto px-6 mx-auto text-center"
+>
   <!-- Hero section -->
-  <section class="flex flex-col space-y-4">
-    <div class="px-6 mx-auto text-center">
-      <h1 class="my-6 text-3xl font-bold text-gray-700 dark:text-gray-200">
-        Kaliro Boda Association
-      </h1>
-      <h1 class="font-light text-medium text-gray-700 dark:text-gray-200">
-        We offer this kind of serces for Boda men in Kaliro and neigboring
-        places. We also offer Lorem ipsum, dolor sit amet consectetur
-        adipisicing elit. Ipsum, neque.
-      </h1>
-    </div>
+  <section
+    class="flex flex-col md:row-reverse space-y-4 justify-center align-middle"
+  >
     <div
-      class="flex justify-center space-x-4 container px-6 mx-auto text-center"
+      class="flex md:flex-row flex-col p-2 justify-self-center align-self-middle"
     >
-      <div>
-        <button
-          class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
-        >
-          Apply
-        </button>
+      <div class="flex justify-center items-center md:w-1/2 md:h-full">
+        <i
+          class="fa-solid fa-motorcycle text-[20vw] text-purple-600 align-self-middle"
+        ></i>
       </div>
-      <div>
-        <button
-          class="px-4 py-2 text-sm font-medium leading-5 text-purple-600 transition-colors duration-150 bg-gray-100 border border-purple-600 rounded-lg active:bg-white hover:bg-white focus:outline-none focus:shadow-outline-purple dark:bg-gray-200"
+      <div class="flex flex-col space-y-6">
+        <div class="flex flex-col justify-center text-center">
+          <h1
+            class="my-6 text-3xl md:text-6xl font-bold text-gray-700 dark:text-gray-200 md:text-6xl"
+          >
+            Kaliro Boda Association
+          </h1>
+          <p
+            class="font-light text-large text-gray-700 dark:text-gray-200 md:w-2/3 mx-auto"
+          >
+            We offer this kind of serces for Boda men in Kaliro and neigboring
+            places. We also offer Lorem ipsum, dolor sit amet consectetur
+            adipisicing elit. Ipsum, neque.
+          </p>
+        </div>
+        <div
+          class="flex justify-center space-x-4 container px-6 mx-auto text-center"
         >
-          More
-        </button>
+          <div>
+            <button
+              class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+            >
+              Apply
+            </button>
+          </div>
+          <div>
+            <button
+              class="px-4 py-2 text-sm font-medium leading-5 text-purple-600 transition-colors duration-150 bg-gray-100 border border-purple-600 rounded-lg active:bg-white hover:bg-white focus:outline-none focus:shadow-outline-purple dark:bg-gray-200"
+            >
+              More
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
-  <section>
-    
+  <section class="services">
+    <h2 class="my-6 text-3xl font-bold text-gray-700 dark:text-gray-200">
+      Services
+    </h2>
+    <p
+      class="font-light mb-6 text-medium text-gray-700 dark:text-gray-200 md:w-2/3 mx-auto"
+    >
+      We are excited to announce that we are offering a number of new services
+      to boda boda riders and users. These services are designed to make it
+      easier for boda boda riders to operate their businesses and for boda boda
+      users to get around the town.
+    </p>
+    <!-- services list -->
+    <div class="grid gap-6 mb-8 md:grid-cols-2">
+      <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+        <div
+          class="flex flex-col space-y-2 mb-4 font-semibold text-gray-600 dark:text-gray-300"
+        >
+          <i
+            class="fa-solid fa-landmark text-3xl text-purple-600 dark:text-purple-300"
+          ></i>
+          <h4>Loans</h4>
+        </div>
+        <p class="text-gray-600 dark:text-gray-400">
+          The loan service would provide boda boda riders with access to
+          affordable financing to help them purchase or maintain their
+          motorcycles. This would help to improve the safety of boda boda riding
+          by ensuring that riders have access to well-maintained motorcycles.
+        </p>
+      </div>
+      <div class="min-w-0 p-4 text-white bg-purple-600 rounded-lg shadow-xs">
+        <div class="flex flex-col space-y-2 mb-4 font-semibold text-gray-200">
+          <i
+            class="fa-solid fa-motorcycle text-3xl text-white dark:text-gray-200"
+          ></i>
+          <h4>Transportation</h4>
+        </div>
+        <p>
+          The transportation service would provide boda boda users with a
+          convenient and affordable way to get around the city. This would help
+          to reduce traffic congestion and make it easier for people to get to
+          where they need to go.
+        </p>
+      </div>
+    </div>
+    <div class="grid gap-6 mb-8 md:grid-cols-2">
+      <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+        <div
+          class="flex flex-col space-y-2 mb-4 font-semibold text-gray-600 dark:text-gray-300"
+        >
+          <i
+            class="fa-solid fa-lightbulb text-3xl text-purple-600 dark:text-purple-300"
+          ></i>
+          <h4>Consultation</h4>
+        </div>
+        <p class="text-gray-600 dark:text-gray-400">
+          The consultation service would provide boda boda riders with advice on
+          a variety of topics, such as how to improve their safety, how to
+          market their services, and how to manage their finances. This would
+          help riders to improve their businesses and earn more money.
+        </p>
+      </div>
+      <div class="min-w-0 p-4 text-white bg-purple-600 rounded-lg shadow-xs">
+        <div
+          class="flex flex-col space-y-2 mb-4 font-semibold text-white dark:text-gray-200"
+        >
+          <i class="fa-solid fa-circle-info text-3xl"></i>
+          <h4>Other Services</h4>
+        </div>
+        <p>
+          In addition to the services mentioned above, we are also planning to
+          offer a number of other services to boda boda riders and users. In
+          addition to the services mentioned above, we are also planning to
+          offer a number of other services to boda boda riders and users.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="services">
+    <h2 class="my-6 text-3xl font-bold text-gray-700 dark:text-gray-200">
+      Contact
+    </h2>
+    <p
+      class="font-light mb-6 text-medium text-gray-700 dark:text-gray-200 md:w-2/3 mx-auto"
+    >
+      Have a question or want to learn more about our services? We would love to
+      hear from you! Reach out to us using the contact information provided
+      below or fill out the form, and our team will get back to you as soon as
+      possible.
+    </p>
+    <!-- Contact info -->
+    <div class="grid gap-6 mb-8 md:grid-cols-2">
+      <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+        <div
+          class="flex flex-col space-y-2 mb-4 font-semibold text-gray-600 dark:text-gray-300"
+        >
+          <i
+            class="fa-solid fa-location-dot text-3xl text-purple-600 dark:text-purple-300"
+          ></i>
+          <h4>Our Address</h4>
+        </div>
+        <p class="text-gray-600 dark:text-gray-400">
+          Local District, Kamuli Rd, Kaliro
+        </p>
+      </div>
+      <div class="min-w-0 p-4 text-white bg-purple-600 rounded-lg shadow-xs">
+        <div
+          class="flex flex-col space-y-2 font-semibold text-white dark:text-gray-200"
+        >
+          <i class="fa-solid fa-envelope text-3xl"></i>
+          <h4>Email Us</h4>
+        </div>
+        <p>kaliroboda@gmail.com</p>
+      </div>
+    </div>
+    <div class="grid gap-6 mb-8 md:grid-cols-2">
+      <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+        <div
+          class="flex flex-col space-y-2 mb-4 font-semibold text-gray-600 dark:text-gray-300"
+        >
+          <i
+            class="fa-solid fa-phone text-3xl text-purple-600 dark:text-purple-300"
+          ></i>
+          <h4>Call Us</h4>
+        </div>
+        <p class="text-gray-600 dark:text-gray-400">+25671754118</p>
+      </div>
+      <div class="min-w-0 p-4 text-white bg-purple-600 rounded-lg shadow-xs">
+        <div
+          class="flex flex-col space-y-2 mb-4 font-semibold text-white dark:text-gray-200"
+        >
+          <i class="fa-solid fa-location-dot text-3xl"></i>
+          <h4>Other ways</h4>
+        </div>
+        <p>Twitter/Facebook - kaliroboda</p>
+      </div>
+    </div>
+    <div>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15957.335351689562!2d33.50483535!3d0.8929033999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177ec893b88239a9%3A0x697511f5985ffa33!2sKaliro!5e0!3m2!1sen!2sug!4v1689585711695!5m2!1sen!2sug"
+        width="600"
+        height="450"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
   </section>
 </main>
 

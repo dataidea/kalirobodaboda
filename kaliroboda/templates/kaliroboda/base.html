@@ -433,12 +433,22 @@
                   aria-label="Account"
                   aria-haspopup="true"
                 >
+                  {% if request.user.is_authenticated %}
                   <img
                     class="object-cover w-8 h-8 rounded-full"
                     src="{{user.display_picture.url}}"
                     alt=""
                     aria-hidden="true"
                   />
+                  {% else %}
+
+                  <img
+                    class="object-cover w-8 h-8 rounded-full"
+                    src="/media/display_pictures/smily.jpg"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                  {% endif %}
                 </button>
                 <template x-if="isProfileMenuOpen">
                   <ul

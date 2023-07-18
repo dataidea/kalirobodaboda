@@ -8,10 +8,12 @@ from .models import Member
 
 class UserAdmin(UserAdmin):
     list_display = ('id', 'first_name', 'last_name')
-
-    def admin_form(self, request, obj=None):
-        form = super().add_form(request, obj)
-        form.fields['display_picture'].widget = forms.ImageField.widget
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': ('username', 'password1', 'password2', 'first_name', 'last_name', 'email', 'gender', 'display_picture'),
+        }),
+    )
 
 # Custom MemberAdmin to display specific attributes
 

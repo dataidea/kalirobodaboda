@@ -1,3 +1,153 @@
 {% extends 'kaliroboda/base.html'%} {% block content%}
-<h1>User Settings</h1>
+<main class="h-full pb-16 overflow-y-auto">
+  <form
+    action="{% url 'accounts:settings' %}"
+    method="post"
+    enctype="multipart/form-data"
+    class="container px-6 mx-auto grid"
+  >
+    {% csrf_token %}
+    <div
+      class="text-center border border-yellow-500 min-w-0 p-4 bg-yellow-200 rounded-lg shadow-xs dark:bg-yellow-200"
+    >
+      <div
+        class="flex flex-col space-y-2 mb-4 font-semibold text-gray-600 dark:text-gray-300"
+      >
+        <i
+          class="fa-solid fa-triangle-exclamation text-3xl text-yellow-600"
+        ></i>
+        <h4>Notice!</h4>
+      </div>
+      <p class="text-gray-600 dark:text-gray-400">
+        You cannot change account info, contact admin for help.
+      </p>
+    </div>
+    <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+      User Settings
+    </h2>
+    <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+      <label class="block py-2 text-sm">
+        <span class="text-gray-700 dark:text-gray-400">First Name</span>
+        <input
+          class="p-2 border rounded block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+          placeholder="Jane Doe"
+          name="first_name"
+          value="{{user.first_name}}"
+          required
+        />
+      </label>
+      <label class="block py-2 text-sm">
+        <span class="text-gray-700 dark:text-gray-400">Last Name</span>
+        <input
+          class="p-2 border rounded block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+          placeholder="Jane Doe"
+          name="last_name"
+          value="{{user.last_name}}"
+          required
+        />
+      </label>
+      <label class="block py-2 text-sm">
+        <span class="text-gray-700 dark:text-gray-400">Email</span>
+        <input
+          class="p-2 border rounded block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+          placeholder="Jane Doe"
+          name="email"
+          value="{{user.email}}"
+        />
+      </label>
+
+      <div class="mt-4 text-sm">
+        <span class="text-gray-700 dark:text-gray-400"> Gender </span>
+        <div class="mt-2">
+          <label
+            class="inline-flex items-center text-gray-600 dark:text-gray-400"
+          >
+            <input
+              type="radio"
+              class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+              name="gender"
+              value="M"
+            />
+            <span class="ml-2">Male</span>
+          </label>
+          <label
+            class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400"
+          >
+            <input
+              type="radio"
+              class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+              name="gender"
+              value="F"
+            />
+            <span class="ml-2">Female</span>
+          </label>
+          <label
+            class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400"
+          >
+            <input
+              type="radio"
+              class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+              name="gender"
+              value="O"
+            />
+            <span class="ml-2">I'd rather not say</span>
+          </label>
+        </div>
+      </div>
+      <label class="block text-sm">
+        <span class="text-gray-700 dark:text-gray-400">Username</span>
+        <input
+          class="p-2 rounded border block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+          placeholder="janedoe"
+          type="text"
+          name="username"
+          value="{{user.username}}"
+          required
+        />
+      </label>
+      <label class="block mt-4 text-sm">
+        <span class="text-gray-700 dark:text-gray-400">Password</span>
+        <input
+          class="p-2 rounded border block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+          placeholder="***************"
+          type="password"
+          name="password"
+          required
+        />
+      </label>
+      <label class="block mt-4 text-sm">
+        <span class="text-gray-700 dark:text-gray-400"> Confirm password </span>
+        <input
+          class="p-2 rounded border block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+          placeholder="***************"
+          type="password"
+          name="confirm_password"
+        />
+      </label>
+      <label class="block mt-4 text-sm"> {{display_picture_form.as_p}} </label>
+
+      <div class="flex mt-6 text-sm">
+        <label class="flex items-center dark:text-gray-400">
+          <input
+            type="checkbox"
+            required
+            class="text-purple-600 form-checkbox focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+          />
+          <span class="ml-2">
+            I agree to the
+            <span class="underline">privacy policy</span>
+          </span>
+        </label>
+      </div>
+    </div>
+    <div>
+      <!-- <button
+        type="submit"
+        class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+      >
+        Regular
+      </button> -->
+    </div>
+  </form>
+</main>
 {% endblock %}

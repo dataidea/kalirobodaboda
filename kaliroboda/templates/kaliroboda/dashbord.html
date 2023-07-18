@@ -127,7 +127,7 @@
               <th class="px-4 py-3">User</th>
               <th class="px-4 py-3">Card ID</th>
               <th class="px-4 py-3">Status</th>
-              <th class="px-4 py-3">Date</th>
+              <th class="px-4 py-3">Gender</th>
             </tr>
           </thead>
           <tbody
@@ -174,7 +174,7 @@
                   {% endif %}
                 </span>
               </td>
-              <td class="px-4 py-3 text-sm">6/10/2020</td>
+              <td class="px-4 py-3 text-sm">{{user.gender}}</td>
             </tr>
             {% endfor %}
           </tbody>

@@ -1,5 +1,5 @@
 {% extends 'kaliroboda/base.html'%} {% block content%}
-<main class="h-full pb-16 overflow-y-auto">
+<main class="p-4 pb-16 overflow-y-auto">
   <form
     action="{% url 'accounts:settings' %}"
     method="post"
@@ -7,24 +7,29 @@
     class="container px-6 mx-auto grid"
   >
     {% csrf_token %}
+
     <div
-      class="text-center border border-yellow-500 min-w-0 p-4 bg-yellow-200 rounded-lg shadow-xs dark:bg-yellow-200"
+      class="pt-2 text-center border border-yellow-500 min-w-0 p-4 bg-yellow-200 rounded-lg shadow-xs dark:bg-yellow-200"
     >
-      <div
-        class="flex flex-col space-y-2 mb-4 font-semibold text-gray-600 dark:text-gray-300"
-      >
-        <i
-          class="fa-solid fa-triangle-exclamation text-3xl text-yellow-600"
-        ></i>
+      <div class="flex flex-col space-y-2 mb-4 font-semibold text-yellow-600">
+        <i class="fa-solid fa-triangle-exclamation text-3xl"></i>
         <h4>Notice!</h4>
       </div>
-      <p class="text-gray-600 dark:text-gray-400">
+      <p class="text-yellow-600">
         You cannot change account info, contact admin for help.
       </p>
     </div>
     <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-      User Settings
+      User Profile
     </h2>
+    <div class="py-5">
+      <img
+        class="m-auto object-cover w-[10rem] h-[10rem] rounded"
+        src="{{user_profile.display_picture.url}}"
+        alt=""
+        aria-hidden="true"
+      />
+    </div>
     <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
       <label class="block py-2 text-sm">
         <span class="text-gray-700 dark:text-gray-400">First Name</span>
@@ -32,8 +37,9 @@
           class="p-2 border rounded block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
           placeholder="Jane Doe"
           name="first_name"
-          value="{{user.first_name}}"
+          value="{{user_profile.first_name}}"
           required
+          disabled
         />
       </label>
       <label class="block py-2 text-sm">
@@ -42,8 +48,9 @@
           class="p-2 border rounded block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
           placeholder="Jane Doe"
           name="last_name"
-          value="{{user.last_name}}"
+          value="{{user_profile.last_name}}"
           required
+          disabled
         />
       </label>
       <label class="block py-2 text-sm">
@@ -52,48 +59,10 @@
           class="p-2 border rounded block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
           placeholder="Jane Doe"
           name="email"
-          value="{{user.email}}"
+          value="{{user_profile.email}}"
+          disabled
         />
       </label>
-
-      <div class="mt-4 text-sm">
-        <span class="text-gray-700 dark:text-gray-400"> Gender </span>
-        <div class="mt-2">
-          <label
-            class="inline-flex items-center text-gray-600 dark:text-gray-400"
-          >
-            <input
-              type="radio"
-              class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-              name="gender"
-              value="M"
-            />
-            <span class="ml-2">Male</span>
-          </label>
-          <label
-            class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400"
-          >
-            <input
-              type="radio"
-              class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-              name="gender"
-              value="F"
-            />
-            <span class="ml-2">Female</span>
-          </label>
-          <label
-            class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400"
-          >
-            <input
-              type="radio"
-              class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
-              name="gender"
-              value="O"
-            />
-            <span class="ml-2">I'd rather not say</span>
-          </label>
-        </div>
-      </div>
       <label class="block text-sm">
         <span class="text-gray-700 dark:text-gray-400">Username</span>
         <input
@@ -101,10 +70,24 @@
           placeholder="janedoe"
           type="text"
           name="username"
-          value="{{user.username}}"
+          value="{{user_profile.username}}"
           required
+          disabled
         />
       </label>
+      <label class="block text-sm">
+        <span class="text-gray-700 dark:text-gray-400">Gender</span>
+        <input
+          class="p-2 rounded border block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+          placeholder="gender"
+          type="text"
+          name="username"
+          value="{{user_profile.gender}}"
+          required
+          disabled
+        />
+      </label>
+
       <label class="block mt-4 text-sm">
         <span class="text-gray-700 dark:text-gray-400">Password</span>
         <input
@@ -113,6 +96,7 @@
           type="password"
           name="password"
           required
+          disabled
         />
       </label>
       <label class="block mt-4 text-sm">
@@ -131,6 +115,7 @@
           <input
             type="checkbox"
             required
+            disabled
             class="text-purple-600 form-checkbox focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
           />
           <span class="ml-2">

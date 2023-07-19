@@ -21,8 +21,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
+# handle page not found
 handler404 = views.pageNotFound
+# handle server error
 handler500 = views.serverError
+
 urlpatterns = [
     path(route='', view=views.home, name='home'),
     path(route='accounts/', view=include('accounts.urls')),

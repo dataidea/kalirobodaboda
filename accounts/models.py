@@ -1,5 +1,4 @@
 from django.db import models
-from django import forms
 from django.contrib.auth.models import AbstractUser
 from locations.models import Stage
 
@@ -25,9 +24,12 @@ class User(AbstractUser):
 
 class Member(models.Model):
     user = models.OneToOneField(to=User, on_delete=models.CASCADE)
-    card_id = models.IntegerField()
     stage = models.ForeignKey(to=Stage, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=25)
+    card_id = models.IntegerField(
+        unique=True, verbose_name="Membership card id")
+    issue_date = models.DateTimeField(verbose_name="Date of issue of card")
+    expiry_date = models.DateTimeField(verbose_name="Date of expiry of card")
 
     def __str__(self):
         return f'{self.user}'

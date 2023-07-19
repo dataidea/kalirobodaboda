@@ -1,13 +1,13 @@
-from django.contrib import admin
 from .models import User
-from django import forms
+from .models import Member
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import Member
 
 
 class UserAdmin(UserAdmin):
-    list_display = ('id', 'first_name', 'last_name')
+    list_display = ('id', 'first_name', 'last_name',
+                    'gender', 'email')
+    # Add custom fields to user form
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
@@ -19,7 +19,8 @@ class UserAdmin(UserAdmin):
 
 
 class MemberAdmin(admin.ModelAdmin):
-    list_display = ('user', 'card_id', 'stage', 'phone_number')
+    list_display = ('user', 'card_id', 'issue_date',
+                    'expiry_date', 'stage', 'phone_number')
 
 
 # Register your models here.

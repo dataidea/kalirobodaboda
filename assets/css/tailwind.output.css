@@ -2538,8 +2538,8 @@ video {
   line-height: 1;
 }
 
-.text-\[20vw\] {
-  font-size: 20vw;
+.text-\[18vw\] {
+  font-size: 18vw;
 }
 
 .text-lg {
@@ -2560,6 +2560,22 @@ video {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-\[15vw\] {
+  font-size: 15vw;
+}
+
+.text-\[25vw\] {
+  font-size: 25vw;
+}
+
+.text-\[2vw\] {
+  font-size: 2vw;
+}
+
+.text-\[20vw\] {
+  font-size: 20vw;
 }
 
 .font-bold {
@@ -2769,6 +2785,11 @@ video {
 .text-yellow-600 {
   --tw-text-opacity: 1;
   color: rgb(202 138 4 / var(--tw-text-opacity));
+}
+
+.text-purple-300 {
+  --tw-text-opacity: 1;
+  color: rgb(216 180 254 / var(--tw-text-opacity));
 }
 
 .underline {

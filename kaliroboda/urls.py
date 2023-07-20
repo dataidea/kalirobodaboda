@@ -27,10 +27,10 @@ handler404 = views.pageNotFound
 handler500 = views.serverError
 
 urlpatterns = [
-    path(route='', view=views.home, name='home'),
+    path(route='', view=views.dashbord, name='dashbord'),
     path(route='accounts/', view=include('accounts.urls')),
     path(route='admin/', view=admin.site.urls),
-    path(route='dashbord/', view=views.dashbord, name='dashbord'),
+    path(route='home/', view=views.home, name='home'),
     path(route='charts/', view=views.charts, name='charts'),
     path(route='export/', view=views.export_csv, name='export'),
 ]

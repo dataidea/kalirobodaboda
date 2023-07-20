@@ -44,8 +44,7 @@ def signup(request):
         if signup_form.is_valid():
             user = signup_form.save()
             login(request, user)
-            context = {}
-            template_name = 'kaliroboda/dashbord.html'
+            return redirect('dashbord')
         else:
             # incase user creation fails
             context = {'error': "Cannot Create User",
@@ -63,9 +62,7 @@ def signup(request):
 
 def signout(request):
     logout(request)
-    context = {}
-    template_name = 'kaliroboda/home.html'
-    return render(request=request, template_name=template_name, context=context)
+    return redirect('dashbord')
 
 # handle profile request
 

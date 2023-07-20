@@ -12,7 +12,7 @@ class User(AbstractUser):
 
     first_name = models.CharField(max_length=25)
     last_name = models.CharField(max_length=25)
-    email = models.EmailField()
+    email = models.EmailField(verbose_name='User email', blank=True)
     gender = models.CharField(choices=GENDER_CHOICES,
                               max_length=1, default="O")
     display_picture = models.ImageField(

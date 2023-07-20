@@ -4,6 +4,7 @@ from accounts.models import Member
 from locations.models import Stage
 from django.shortcuts import render
 from locations.models import District
+from django.http import HttpResponse
 
 
 # fetch all users
@@ -27,6 +28,8 @@ def fetchAll():
     except Exception as e:
         context = {'error': e,
                    'message': 'Sorry, a problem occured while fetching users from the database. Please refresh this page, if the problem persists, contact the admin for help.'}
+        template_name = 'kaliroboda/error.html'
+        return render(request=request, template_name=template_name, context=context)
     return context
 
 # handle home page request
@@ -69,14 +72,30 @@ def serverError(request):
 
 
 def export_csv(request):
+    table = request.GET.get('table')
     response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="user_table.csv"'
 
-    writer = csv.writer(response)
-    writer.writerow(['ID', 'First Name', 'Last Name', 'Email', 'Phone', 'Gender', 'Date of Birth'])
+    if table == 'users':
+        response['Content-Disposition'] = 'attachment; filename="user_table.csv"'
+        writer = csv.writer(response)
+        writer.writerow(['ID', 'FirstName', 'LastName', 'Username', 'Email',
+                         'Gender', 'DisplayPicture'])
+        for user in User.objects.all().values_list(
+                'id', 'first_name', 'last_name', 'username', 'email', 'gender', 'display_picture'):
+            writer.writerow(user)
 
-    for prediction in Prediction.objects.all().values_list(
-            'id', 'prediction', 'confidence', 'location', 'time', 'date', 'image'):
-        writer.writerow(prediction)
+    elif table == 'members':
+        response['Content-Disposition'] = 'attachment; filename="member_table.csv"'
+        writer = csv.writer(response)
+        writer.writerow(['UserID', 'Stage', 'PhoneNumber',
+                        'CardID', 'IssueDate', 'ExpiryDate'])
+        for member in Member.objects.all().values_list(
+                'user', 'stage', 'phone_number', 'card_id', 'issue_date', 'expiry_date'):
+            writer.writerow(member)
+
+    else:
+        context = {}
+        template_name = 'kaliroboda/export.html'
+        return render(request=request, template_name=template_name, context=context)
 
     return response

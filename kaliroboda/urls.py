@@ -32,6 +32,7 @@ urlpatterns = [
     path(route='admin/', view=admin.site.urls),
     path(route='home/', view=views.home, name='home'),
     path(route='export/', view=views.export_csv, name='export'),
+    path(route='faqs', view=views.faqs, name='faqs'),
 ]
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

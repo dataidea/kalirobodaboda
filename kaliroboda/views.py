@@ -47,12 +47,22 @@ def dashbord(request):
     return render(request=request, template_name=template_name, context=context)
 
 
+def faqs(request):
+    context = {}
+    template_name = 'kaliroboda/faqs.html'
+    return render(request=request, template_name=template_name, context=context)
+
+
 def pageNotFound(request, exception):
-    return render(request=request, template_name='kaliroboda/404.html', context={})
+    context = {}
+    template_name = 'kaliroboda/404.html'
+    return render(request=request, template_name=template_name, context=context)
 
 
 def serverError(request):
-    return render(request=request, template_name='kaliroboda/500.html', context={})
+    context = {}
+    template_name = 'kaliroboda/500.html'
+    return render(request=request, template_name=template_name, context=context)
 
 
 def export_csv(request):

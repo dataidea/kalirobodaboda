@@ -15,13 +15,13 @@ class Member(models.Model):
     title = models.CharField(max_length=25)
     gender = models.CharField(choices=GENDER_CHOICES,
                               max_length=1, default="O")
+    phone_number = models.CharField(max_length=25)
     display_picture = models.ImageField(
         default='display_pictures/smily.jpg', upload_to='display_pictures')
+    district = models.CharField(max_length=25)
     village = models.CharField(max_length=25)
     stage = models.CharField(max_length=25)
-    phone_number = models.CharField(max_length=25)
-    card_id = models.IntegerField(
-        unique=True, verbose_name="Membership card id")
+    card_id = models.IntegerField(verbose_name="Membership card id")
     issue_date = models.DateTimeField(verbose_name="Date of issue of card")
     expiry_date = models.DateTimeField(verbose_name="Date of expiry of card")
 

@@ -6,7 +6,7 @@ from django.contrib import admin
 
 class MemberAdmin(admin.ModelAdmin):
     list_display = ('card_id', 'first_name', 'last_name', 'title',
-                    'stage', 'village', 'phone_number')
+                    'stage', 'village', 'district', 'phone_number')
 
 
 # Register your models here.

@@ -1,7 +1,7 @@
 {% extends 'kaliroboda/base.html'%} {% block content%}
 <main class="p-4 pb-16 overflow-y-auto">
   <form
-    action="{% url 'accounts:settings' %}"
+    action=""
     method="post"
     enctype="multipart/form-data"
     class="container px-6 mx-auto grid"
@@ -20,12 +20,12 @@
       </p>
     </div>
     <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-      User Profile
+      Member Profile
     </h2>
     <div class="py-5">
       <img
         class="m-auto object-cover w-[10rem] h-[10rem] rounded"
-        src="{{user_profile.display_picture.url}}"
+        src="{{member_profile.display_picture.url}}"
         alt=""
         aria-hidden="true"
       />
@@ -37,7 +37,7 @@
           class="p-2 border rounded block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
           placeholder="Jane Doe"
           name="first_name"
-          value="{{user_profile.first_name}}"
+          value="{{member_profile.first_name}}"
           required
           disabled
         />
@@ -48,7 +48,7 @@
           class="p-2 border rounded block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
           placeholder="Jane Doe"
           name="last_name"
-          value="{{user_profile.last_name}}"
+          value="{{member_profile.last_name}}"
           required
           disabled
         />
@@ -59,57 +59,83 @@
           class="p-2 border rounded block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
           placeholder="Jane Doe"
           name="email"
-          value="{{user_profile.email}}"
+          value="{{member_profile.email}}"
           disabled
         />
       </label>
-      <label class="block text-sm">
-        <span class="text-gray-700 dark:text-gray-400">Username</span>
-        <input
-          class="p-2 rounded border block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-          placeholder="janedoe"
-          type="text"
-          name="username"
-          value="{{user_profile.username}}"
-          required
-          disabled
-        />
       </label>
-      <label class="block text-sm">
+      <label class="block text-sm py-2">
         <span class="text-gray-700 dark:text-gray-400">Gender</span>
         <input
           class="p-2 rounded border block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
           placeholder="gender"
           type="text"
-          name="username"
-          value="{{user_profile.gender}}"
+          name="membername"
+          value="{{member_profile.gender}}"
           required
           disabled
         />
       </label>
-
-      <label class="block mt-4 text-sm">
-        <span class="text-gray-700 dark:text-gray-400">Password</span>
+      <label class="block text-sm py-2">
+        <span class="text-gray-700 dark:text-gray-400">Stage</span>
         <input
           class="p-2 rounded border block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-          placeholder="***************"
-          type="password"
-          name="password"
+          placeholder=""
+          type="text"
+          name="membername"
+          value="{{member_profile.member.stage}}"
           required
           disabled
         />
       </label>
-      <label class="block mt-4 text-sm">
-        <span class="text-gray-700 dark:text-gray-400"> Confirm password </span>
+      <label class="block text-sm py-2">
+        <span class="text-gray-700 dark:text-gray-400">Phone Number</span>
         <input
           class="p-2 rounded border block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-          placeholder="***************"
-          type="password"
-          name="confirm_password"
+          placeholder=""
+          type="text"
+          name="membername"
+          value="{{member_profile.member.phone_number}}"
+          required
+          disabled
         />
       </label>
-      <label class="block mt-4 text-sm"> {{display_picture_form.as_p}} </label>
-
+      <label class="block text-sm py-2">
+        <span class="text-gray-700 dark:text-gray-400">Card ID</span>
+        <input
+          class="p-2 rounded border block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+          placeholder=""
+          type="text"
+          name="membername"
+          value="{{member_profile.member.card_id}}"
+          required
+          disabled
+        />
+      </label>
+      <label class="block text-sm py-2">
+        <span class="text-gray-700 dark:text-gray-400">Card Issue Date</span>
+        <input
+          class="p-2 rounded border block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+          placeholder=""
+          type="text"
+          name="membername"
+          value="{{member_profile.member.issue_date}}"
+          required
+          disabled
+        />
+      </label>
+      <label class="block text-sm py-2">
+        <span class="text-gray-700 dark:text-gray-400">Card Expiry Date</span>
+        <input
+          class="p-2 rounded border block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+          placeholder=""
+          type="text"
+          name="membername"
+          value="{{member_profile.member.expiry_date}}"
+          required
+          disabled
+        />
+      </label>
       <div class="flex mt-6 text-sm">
         <label class="flex items-center dark:text-gray-400">
           <input

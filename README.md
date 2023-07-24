@@ -44,3 +44,8 @@
 ## Plan
 
 Adminstration levels will be adjusted using django admin area
+
+## Best version
+
+2183319 HEAD@{1}: commit: added verbose name to email
+:

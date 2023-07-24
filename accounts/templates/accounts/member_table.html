@@ -17,7 +17,7 @@
     </div>
     <span>View now &RightArrow;</span>
   </a>
-  <form action="{% url 'accounts:user_search' %}" method="get">
+  <form action="{% url 'accounts:member_search' %}" method="get">
     {% csrf_token %}
     <label class="block mt-4 text-sm mb-3">
       <!-- <span class="text-gray-700 dark:text-gray-400"> Button right </span> -->
@@ -48,7 +48,7 @@
       </div>
     </label>
   </form>
-  {% if users %}
+  {% if members %}
   <div class="w-full overflow-hidden rounded-lg shadow-xs">
     <div class="w-full overflow-x-auto">
       <table class="w-full whitespace-no-wrap">
@@ -56,25 +56,28 @@
           <tr
             class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
           >
-            <th class="px-4 py-3">User</th>
+            <th class="px-4 py-3">Member</th>
             <th class="px-4 py-3">Card ID</th>
-            <th class="px-4 py-3">Status</th>
-            <th class="px-4 py-3">Date</th>
+            <th class="px-4 py-3">Title</th>
+            <th class="px-4 py-3">Stage</th>
+            <th class="px-4 py-3">Village</th>
+            <th class="px-4 py-3">Phone Number</th>
+            <th class="px-4 py-3">Gender</th>
           </tr>
         </thead>
         <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-          {% for user in users %}
+          {% for member in members %}
           <tr class="text-gray-700 dark:text-gray-400">
             <td class="px-4 py-3">
               <a
-                href="{% url 'accounts:profile'%}?user_id={{user.id}}"
+                href="{% url 'accounts:profile'%}?member_id={{member.id}}"
                 class="flex items-center text-sm"
               >
                 <!-- Avatar with inset shadow -->
                 <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
                   <img
                     class="object-cover w-full h-full rounded-full"
-                    src="{{user.display_picture.url}}"
+                    src="{{member.display_picture.url}}"
                     alt=""
                     loading="lazy"
                   />
@@ -85,27 +88,18 @@
                 </div>
                 <div>
                   <p class="font-semibold">
-                    {{user.first_name}} {{user.last_name}}
+                    {{member.first_name}} {{member.last_name}}
                   </p>
-                  <p class="text-xs text-gray-600 dark:text-gray-400">User</p>
+                  <p class="text-xs text-gray-600 dark:text-gray-400">Member</p>
                 </div>
               </a>
             </td>
-            <td class="px-4 py-3 text-sm">{{user.id}}</td>
-            <td class="px-4 py-3 text-xs">
-              <span
-                class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
-              >
-                {% if user.member %}
-                <span>Member</span>
-                {% elif user.is_staff %}
-                <span>Staff</span>
-                {% else %}
-                <span>Other</span>
-                {% endif %}
-              </span>
-            </td>
-            <td class="px-4 py-3 text-sm">{{user.gender}}</td>
+            <td class="px-4 py-3 text-sm">{{member.card_id}}</td>
+            <td class="px-4 py-3 text-sm">{{member.gender}}</td>
+            <td class="px-4 py-3 text-sm">{{member.stage}}</td>
+            <td class="px-4 py-3 text-sm">{{member.village}}</td>
+            <td class="px-4 py-3 text-sm">{{member.phone_number}}</td>
+            <td class="px-4 py-3 text-sm">{{member.gender}}</td>
           </tr>
           {% endfor %}
         </tbody>

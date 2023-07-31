@@ -4,49 +4,18 @@
     Frequently Asked Questions
   </h2>
   <div class="grid gap-6 md:grid-cols-2">
+    {% if faqs%} {% for faq in faqs%}
     <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
       <h4 class="mb-2 font-semibold text-gray-600 dark:text-gray-300">
-        How can I apply for membership in Kaliro Boda Association?
+        {{faq.question}}
       </h4>
-      <p class="text-gray-600 dark:text-gray-400">
-        To apply for membership, please visit our office located at Local
-        District, Kamuli Rd, Kaliro. You can also reach out to us via email at
-        kaliroboda@gmail.com or call us at +25671754118 for more information.
-      </p>
+      <p class="text-gray-600 dark:text-gray-400">{{faq.answer}}</p>
     </div>
+    {% endfor %} {% else %}
     <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-      <h4 class="mb-2 font-semibold text-gray-600 dark:text-gray-300">
-        What services are offered by Kaliro Boda Association?
-      </h4>
-      <p class="text-gray-600 dark:text-gray-400">
-        We offer a range of services for boda boda riders, including loans for
-        motorcycle financing, transportation services for boda boda users, and
-        consultation services for riders to improve their businesses. We also
-        plan to introduce other services in the future.
-      </p>
+      <p class="text-gray-600 dark:text-gray-400">No faqs found!</p>
     </div>
-    <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-      <h4 class="mb-2 font-semibold text-gray-600 dark:text-gray-300">
-        How can I contact Kaliro Boda Association for more information?
-      </h4>
-      <p class="text-gray-600 dark:text-gray-400">
-        You can reach out to us via email at kaliroboda@gmail.com or call us at
-        +25671754118. You can also visit our office at Local District, Kamuli
-        Rd, Kaliro. Our team will be happy to assist you with any inquiries you
-        may have.
-      </p>
-    </div>
-    <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-      <h4 class="mb-2 font-semibold text-gray-600 dark:text-gray-300">
-        How does the transportation service work for boda boda users?
-      </h4>
-      <p class="text-gray-600 dark:text-gray-400">
-        The transportation service provides boda boda users with a convenient
-        and affordable way to get around the city. Simply book a ride with our
-        registered riders through our app or by calling us. Our riders will pick
-        you up and take you to your destination quickly and safely.
-      </p>
-    </div>
+    {% endif %}
   </div>
 </section>
 

@@ -30,8 +30,9 @@ def profile(request):
 
 
 def memberTable(request):
-    members = Member.objects.all().order_by('first_name')
-    context = {'members': members}
+    # members = Member.objects.all().order_by('first_name')
+    # context = {'members': members}
+    context = {}
     template_name = 'accounts/member_table.html'
     return render(request=request, template_name=template_name, context=context)
 
@@ -45,7 +46,7 @@ def memberSearch(request):
         # find all members with the parameters containing the query
         results = Member.objects.filter(
             Q(first_name__icontains=query) | Q(last_name__icontains=query) | Q(
-                email__icontains=query)
+                email__icontains=query) | Q(card_id__icontains=query)
         )
         context = {'members': results, 'query': query}
         template_name = 'accounts/member_table.html'

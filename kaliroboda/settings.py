@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'kaliroboda',
+    'companyinfo.apps.CompanyinfoConfig',
     'accounts.apps.AccountsConfig',
     'locations.apps.LocationsConfig',
     'django.contrib.auth',

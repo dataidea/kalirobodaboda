@@ -2,8 +2,11 @@ import csv
 from accounts.models import Member
 from locations.models import Stage
 from django.shortcuts import render
-from locations.models import District
 from django.http import HttpResponse
+from locations.models import District
+from companyinfo.models import Service
+from companyinfo.models import CompanyInfo
+from companyinfo.models import FrequentlyAskedQuestion
 
 
 def fetchAll(request):
@@ -30,7 +33,9 @@ def fetchAll(request):
 
 
 def home(request):
-    context = {}
+    companyinfo = CompanyInfo.objects.all()
+    services = Service.objects.all()
+    context = {'companyinfo': companyinfo[0], 'services': services, }
     template_name = 'kaliroboda/home.html'
     return render(request=request, template_name=template_name, context=context)
 
@@ -48,7 +53,8 @@ def dashbord(request):
 
 
 def faqs(request):
-    context = {}
+    faqs = FrequentlyAskedQuestion.objects.all()
+    context = {'faqs': faqs}
     template_name = 'kaliroboda/faqs.html'
     return render(request=request, template_name=template_name, context=context)
 

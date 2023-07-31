@@ -65,68 +65,18 @@
     </p>
     <!-- services list -->
     <div class="grid gap-6 mb-8 md:grid-cols-2">
+      {% if services %} {% for service in services%}
       <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-        <div
-          class="flex flex-col space-y-2 mb-4 font-semibold text-gray-600 dark:text-gray-300"
-        >
-          <i
-            class="fa-solid fa-beat-fade fa-landmark text-3xl text-purple-600 dark:text-purple-300"
-          ></i>
-          <h4>Loans</h4>
-        </div>
-        <p class="text-gray-600 dark:text-gray-400">
-          The loan service would provide boda boda riders with access to
-          affordable financing to help them purchase or maintain their
-          motorcycles. This would help to improve the safety of boda boda riding
-          by ensuring that riders have access to well-maintained motorcycles.
-        </p>
+        <h4 class="mb-2 font-semibold text-gray-600 dark:text-gray-300">
+          {{service.name}}
+        </h4>
+        <p class="text-gray-600 dark:text-gray-400">{{service.description}}</p>
       </div>
-      <div class="min-w-0 p-4 text-white bg-purple-600 rounded-lg shadow-xs">
-        <div class="flex flex-col space-y-2 mb-4 font-semibold text-gray-200">
-          <i
-            class="fa-solid fa-beat-fade fa-motorcycle text-3xl text-white dark:text-gray-200"
-          ></i>
-          <h4>Transportation</h4>
-        </div>
-        <p>
-          The transportation service would provide boda boda users with a
-          convenient and affordable way to get around the city. This would help
-          to reduce traffic congestion and make it easier for people to get to
-          where they need to go.
-        </p>
-      </div>
-    </div>
-    <div class="grid gap-6 mb-8 md:grid-cols-2">
+      {% endfor %} {% else %}
       <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-        <div
-          class="flex flex-col space-y-2 mb-4 font-semibold text-gray-600 dark:text-gray-300"
-        >
-          <i
-            class="fa-solid fa-beat-fade fa-lightbulb text-3xl text-purple-600 dark:text-purple-300"
-          ></i>
-          <h4>Consultation</h4>
-        </div>
-        <p class="text-gray-600 dark:text-gray-400">
-          The consultation service would provide boda boda riders with advice on
-          a variety of topics, such as how to improve their safety, how to
-          market their services, and how to manage their finances. This would
-          help riders to improve their businesses and earn more money.
-        </p>
+        <p class="text-gray-600 dark:text-gray-400">No services found!</p>
       </div>
-      <div class="min-w-0 p-4 text-white bg-purple-600 rounded-lg shadow-xs">
-        <div
-          class="flex flex-col space-y-2 mb-4 font-semibold text-white dark:text-gray-200"
-        >
-          <i class="fa-solid fa-beat-fade fa-circle-info text-3xl"></i>
-          <h4>Other Services</h4>
-        </div>
-        <p>
-          In addition to the services mentioned above, we are also planning to
-          offer a number of other services to boda boda riders and users. In
-          addition to the services mentioned above, we are also planning to
-          offer a number of other services to boda boda riders and users.
-        </p>
-      </div>
+      {% endif %}
     </div>
   </section>
   <section class="services">
@@ -143,6 +93,7 @@
     </p>
     <!-- Contact info -->
     <div class="grid gap-6 mb-8 md:grid-cols-2">
+      {% if companyinfo.address %}
       <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
         <div
           class="flex flex-col space-y-2 mb-4 font-semibold text-gray-600 dark:text-gray-300"
@@ -152,10 +103,9 @@
           ></i>
           <h4>Our Address</h4>
         </div>
-        <p class="text-gray-600 dark:text-gray-400">
-          Local District, Kamuli Rd, Kaliro
-        </p>
+        <p class="text-gray-600 dark:text-gray-400">{{companyinfo.address}}</p>
       </div>
+      {% endif %} {% if companyinfo.email %}
       <div class="min-w-0 p-4 text-white bg-purple-600 rounded-lg shadow-xs">
         <div
           class="flex flex-col space-y-2 font-semibold text-white dark:text-gray-200"
@@ -163,10 +113,12 @@
           <i class="fa-solid fa-beat-fade fa-envelope text-3xl"></i>
           <h4>Email Us</h4>
         </div>
-        <p>kaliroboda@gmail.com</p>
+        <p>{{companyinfo.email}}</p>
       </div>
+      {% endif %}
     </div>
     <div class="grid gap-6 mb-8 md:grid-cols-2">
+      {% if companyinfo.phone %}
       <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
         <div
           class="flex flex-col space-y-2 mb-4 font-semibold text-gray-600 dark:text-gray-300"
@@ -176,8 +128,9 @@
           ></i>
           <h4>Call Us</h4>
         </div>
-        <p class="text-gray-600 dark:text-gray-400">+25671754118</p>
+        <p class="text-gray-600 dark:text-gray-400">{{companyinfo.phone}}</p>
       </div>
+      {% endif %} {% if companyinfo.other_contact %}
       <div class="min-w-0 p-4 text-white bg-purple-600 rounded-lg shadow-xs">
         <div
           class="flex flex-col space-y-2 mb-4 font-semibold text-white dark:text-gray-200"
@@ -185,8 +138,9 @@
           <i class="fa-solid fa-beat-fade fa-location-dot text-3xl"></i>
           <h4>Other ways</h4>
         </div>
-        <p>Twitter/Facebook - kaliroboda</p>
+        <p>{{companyinfo.other_contact}}</p>
       </div>
+      {% endif %}
     </div>
     <div>
       <iframe

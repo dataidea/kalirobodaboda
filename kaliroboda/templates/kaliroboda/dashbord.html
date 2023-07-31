@@ -95,7 +95,7 @@
     </div>
     <!-- New Table -->
     {% if sample_members %}
-    <div class="w-full overflow-hidden rounded-lg shadow-xs">
+    <!-- <div class="w-full overflow-hidden rounded-lg shadow-xs">
       <div class="w-full overflow-x-auto">
         <table class="w-full whitespace-no-wrap">
           <thead>
@@ -122,7 +122,7 @@
                   href="{% url 'accounts:profile'%}?member_id={{member.id}}"
                   class="flex items-center text-sm"
                 >
-                  <!-- Avatar with inset shadow -->
+                  
                   <div
                     class="relative hidden w-8 h-8 mr-3 rounded-full md:block"
                   >
@@ -176,10 +176,7 @@
           </div>
           <span>View more &RightArrow;</span>
         </a>
-        <!-- <span class="flex items-center col-span-3"> Showing 21-30 of 100 </span>
-        <span class="col-span-2"></span> -->
-        <!-- Pagination -->
-        <!-- <span class="flex col-span-4 mt-2 sm:mt-auto sm:justify-end">
+        
           <nav aria-label="Table navigation">
             <ul class="inline-flex items-center">
               <li>
@@ -265,12 +262,11 @@
               </li>
             </ul>
           </nav>
-        </span> -->
       </div>
     </div>
     {% else %}
     <h2 class="text-white">No members found</h2>
-    {% endif %}
+    {% endif %} -->
   </div>
 </main>
 

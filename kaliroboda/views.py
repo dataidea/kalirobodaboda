@@ -95,10 +95,9 @@ def export_csv(request):
     if table == 'members':
         response['Content-Disposition'] = 'attachment; filename="member_table.csv"'
         writer = csv.writer(response)
-        writer.writerow(['Card Id', 'FirstName', 'LastName', 'Title',
-                         'Stage', 'Village', 'PhoneNumber'])
-        for member in Member.objects.all().values_list('card_id', 'first_name', 'last_name', 'title',
-                                                       'stage', 'village', 'phone_number'):
+        writer.writerow(['Card Id', 'FirstName', 'LastName', 'Title', 'Status', 'District',
+                         'Village', 'Stage', 'PhoneNumber'])
+        for member in Member.objects.all().values_list('card_id', 'first_name', 'last_name', 'title', 'status', 'district', 'village', 'stage', 'phone_number'):
             writer.writerow(member)
 
     else:

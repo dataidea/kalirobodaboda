@@ -16,9 +16,6 @@ def fetchCompanyInfo():
     return company_info
 
 
-company_info = fetchCompanyInfo()
-
-
 def getStats(request):
     try:
         members = Member.objects.all()
@@ -46,6 +43,7 @@ def getStats(request):
 
 
 def home(request):
+    company_info = fetchCompanyInfo()
     services = Service.objects.all()
     context = {'title': 'Home',
                'company_info': company_info, 'services': services, }
@@ -57,6 +55,7 @@ def home(request):
 
 def dashbord(request):
     context = getStats(request=request)
+    company_info = fetchCompanyInfo()
 
     if context:
         context['company_info'] = company_info
@@ -70,6 +69,7 @@ def dashbord(request):
 
 
 def faqs(request):
+    company_info = fetchCompanyInfo()
     faqs = FrequentlyAskedQuestion.objects.all()
     context = {'faqs': faqs, 'company_info': company_info}
     template_name = 'kaliroboda/faqs.html'
@@ -77,12 +77,14 @@ def faqs(request):
 
 
 def pageNotFound(request, exception):
+    company_info = fetchCompanyInfo()
     context = {'company_info': company_info}
     template_name = 'kaliroboda/404.html'
     return render(request=request, template_name=template_name, context=context)
 
 
 def serverError(request):
+    company_info = fetchCompanyInfo()
     context = {'company_info': company_info}
     template_name = 'kaliroboda/500.html'
     return render(request=request, template_name=template_name, context=context)

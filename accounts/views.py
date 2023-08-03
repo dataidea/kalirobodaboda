@@ -15,11 +15,9 @@ def fetchCompanyInfo():
     return company_info
 
 
-company_info = fetchCompanyInfo()
-
-
 def profile(request):
     # get id sent as query on url string
+    company_info = fetchCompanyInfo()
     member_id = request.GET.get('member_id')
     if member_id:
         try:
@@ -46,6 +44,7 @@ def profile(request):
 def memberTable(request):
     # members = Member.objects.all().order_by('first_name')
     # context = {'members': members}
+    company_info = fetchCompanyInfo()
     context = {'company_info': company_info}
     template_name = 'accounts/member_table.html'
     return render(request=request, template_name=template_name, context=context)
@@ -55,8 +54,10 @@ def memberTable(request):
 
 def memberSearch(request):
     # get query from form submission url
+
     query = request.GET.get('query')
     if query:
+        company_info = fetchCompanyInfo()
         # find all members with the parameters containing the query
         results = Member.objects.filter(
             Q(first_name__icontains=query) | Q(last_name__icontains=query) | Q(

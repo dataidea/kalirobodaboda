@@ -22,10 +22,10 @@ def getStats(request):
         districts = []
         stages = []
         for member in members:
-            if member.district not in districts:
-                districts.append(member.district)
-            if member.stage not in stages:
-                stages.append(member.stage)
+            if member.district.lower() not in districts:
+                districts.append(member.district.lower())
+            if member.stage.lower() not in stages:
+                stages.append(member.stage.lower())
 
         context = {
             'total_members': members.count(),

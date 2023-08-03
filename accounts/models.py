@@ -1,5 +1,4 @@
 from django.db import models
-from locations.models import Stage
 
 
 # Create your models here.
@@ -8,6 +7,7 @@ from locations.models import Stage
 class Member(models.Model):
     REQUIRED_FIELDS = ['first_name', 'last_name']
     GENDER_CHOICES = [('M', 'Male'), ('F', 'Female'), ('O', 'Other')]
+    MEMEBER_STATUSES = [('T', 'Member'), ('F', 'Non-Member'), ('P', 'Pending')]
 
     first_name = models.CharField(max_length=25)
     last_name = models.CharField(max_length=25)
@@ -21,6 +21,8 @@ class Member(models.Model):
     district = models.CharField(max_length=25)
     village = models.CharField(max_length=25)
     stage = models.CharField(max_length=25)
+    status = models.CharField(choices=MEMEBER_STATUSES,
+                              default='T', max_length=1, verbose_name='Membership Status')
     card_id = models.IntegerField(verbose_name="Membership card id")
     issue_date = models.DateTimeField(verbose_name="Date of issue of card")
     expiry_date = models.DateTimeField(verbose_name="Date of expiry of card")

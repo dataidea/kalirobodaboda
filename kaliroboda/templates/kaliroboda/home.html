@@ -18,34 +18,34 @@
       <div class="flex flex-col space-y-6">
         <div class="flex flex-col justify-center text-center">
           <h1
-            class="my-6 text-3xl md:text-6xl font-bold text-gray-700 dark:text-gray-200 md:text-6xl"
+            class="my-6 text-3xl font-bold text-gray-700 dark:text-gray-200 md:text-6xl"
           >
-            Kaliro Boda Association
+            {{company_info.name}}
           </h1>
           <p
             class="font-light text-large text-gray-700 dark:text-gray-200 md:w-2/3 mx-auto"
           >
-            We offer this kind of serces for Boda men in Kaliro and neigboring
-            places. We also offer Lorem ipsum, dolor sit amet consectetur
-            adipisicing elit. Ipsum, neque.
+            {{company_info.description}}
           </p>
         </div>
         <div
           class="flex justify-center space-x-4 container px-6 mx-auto text-center"
         >
           <div>
-            <button
+            <a
+              href="tel:{{company_info.phone}}"
               class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
             >
               Apply
-            </button>
+            </a>
           </div>
           <div>
-            <button
+            <a
+              href="{% url 'faqs'%}"
               class="px-4 py-2 text-sm font-medium leading-5 text-purple-600 transition-colors duration-150 bg-gray-100 border border-purple-600 rounded-lg active:bg-white hover:bg-white focus:outline-none focus:shadow-outline-purple dark:bg-gray-200"
             >
               More
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -93,7 +93,7 @@
     </p>
     <!-- Contact info -->
     <div class="grid gap-6 mb-8 md:grid-cols-2">
-      {% if companyinfo.address %}
+      {% if company_info.address %}
       <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
         <div
           class="flex flex-col space-y-2 mb-4 font-semibold text-gray-600 dark:text-gray-300"
@@ -103,9 +103,9 @@
           ></i>
           <h4>Our Address</h4>
         </div>
-        <p class="text-gray-600 dark:text-gray-400">{{companyinfo.address}}</p>
+        <p class="text-gray-600 dark:text-gray-400">{{company_info.address}}</p>
       </div>
-      {% endif %} {% if companyinfo.email %}
+      {% endif %} {% if company_info.email %}
       <div class="min-w-0 p-4 text-white bg-purple-600 rounded-lg shadow-xs">
         <div
           class="flex flex-col space-y-2 font-semibold text-white dark:text-gray-200"
@@ -113,12 +113,12 @@
           <i class="fa-solid fa-beat-fade fa-envelope text-3xl"></i>
           <h4>Email Us</h4>
         </div>
-        <p>{{companyinfo.email}}</p>
+        <p>{{company_info.email}}</p>
       </div>
       {% endif %}
     </div>
     <div class="grid gap-6 mb-8 md:grid-cols-2">
-      {% if companyinfo.phone %}
+      {% if company_info.phone %}
       <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
         <div
           class="flex flex-col space-y-2 mb-4 font-semibold text-gray-600 dark:text-gray-300"
@@ -128,9 +128,9 @@
           ></i>
           <h4>Call Us</h4>
         </div>
-        <p class="text-gray-600 dark:text-gray-400">{{companyinfo.phone}}</p>
+        <p class="text-gray-600 dark:text-gray-400">{{company_info.phone}}</p>
       </div>
-      {% endif %} {% if companyinfo.other_contact %}
+      {% endif %} {% if company_info.other_contact %}
       <div class="min-w-0 p-4 text-white bg-purple-600 rounded-lg shadow-xs">
         <div
           class="flex flex-col space-y-2 mb-4 font-semibold text-white dark:text-gray-200"
@@ -138,7 +138,7 @@
           <i class="fa-solid fa-beat-fade fa-location-dot text-3xl"></i>
           <h4>Other ways</h4>
         </div>
-        <p>{{companyinfo.other_contact}}</p>
+        <p>{{company_info.other_contact}}</p>
       </div>
       {% endif %}
     </div>

@@ -59,6 +59,7 @@
             <th class="px-4 py-3">Member</th>
             <th class="px-4 py-3">Card ID</th>
             <th class="px-4 py-3">Title</th>
+            <th class="px-4 py-3">Status</th>
             <th class="px-4 py-3">Stage</th>
             <th class="px-4 py-3">Village</th>
             <th class="px-4 py-3">District</th>
@@ -96,7 +97,28 @@
               </a>
             </td>
             <td class="px-4 py-3 text-sm">{{member.card_id}}</td>
-            <td class="px-4 py-3 text-sm">{{member.gender}}</td>
+            <td class="px-4 py-3 text-sm">{{member.title}}</td>
+            <td class="px-4 py-3 text-sm">
+              {% if member.status == 'T' %}
+              <span
+                class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"
+              >
+                True
+              </span>
+              {% elif member.status == 'F' %}
+              <span
+                class="px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full dark:text-white dark:bg-orange-600"
+              >
+                False
+              </span>
+              {% else %}
+              <span
+                class="px-2 py-1 font-semibold leading-tight text-gray-700 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-100"
+              >
+                True
+              </span>
+              {% endif %}
+            </td>
             <td class="px-4 py-3 text-sm">{{member.stage}}</td>
             <td class="px-4 py-3 text-sm">{{member.village}}</td>
             <td class="px-4 py-3 text-sm">{{member.district}}</td>

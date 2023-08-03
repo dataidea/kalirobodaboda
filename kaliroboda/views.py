@@ -1,26 +1,39 @@
 import csv
 from accounts.models import Member
-from locations.models import Stage
 from django.shortcuts import render
 from django.http import HttpResponse
-from locations.models import District
 from companyinfo.models import Service
 from companyinfo.models import CompanyInfo
 from companyinfo.models import FrequentlyAskedQuestion
 
 
-def fetchAll(request):
+def fetchCompanyInfo():
+    try:
+        company_info = CompanyInfo.objects.values()[0]
+        print({'company_info': company_info})
+    except Exception as e:
+        company_info = {}
+    return company_info
+
+
+company_info = fetchCompanyInfo()
+
+
+def getStats(request):
     try:
         members = Member.objects.all()
-        districts = District.objects.all()
-        stages = Stage.objects.all()
+        districts = []
+        stages = []
+        for member in members:
+            if member.district not in districts:
+                districts.append(member.district)
+            if member.stage not in stages:
+                stages.append(member.stage)
+
         context = {
-            'sample_members': members[:5],
             'total_members': members.count(),
-            'sample_districts': districts,
-            'total_districts': districts.count(),
-            'sample_stages': stages,
-            'total_stages': stages.count(),
+            'total_districts': len(districts),
+            'total_stages': len(stages),
         }
     except Exception as e:
         context = {'error': e,
@@ -33,9 +46,9 @@ def fetchAll(request):
 
 
 def home(request):
-    companyinfo = CompanyInfo.objects.all()
     services = Service.objects.all()
-    context = {'companyinfo': companyinfo[0], 'services': services, }
+    context = {'title': 'Home',
+               'company_info': company_info, 'services': services, }
     template_name = 'kaliroboda/home.html'
     return render(request=request, template_name=template_name, context=context)
 
@@ -43,30 +56,34 @@ def home(request):
 
 
 def dashbord(request):
-    context = fetchAll(request=request)
-    if context['sample_members']:
+    context = getStats(request=request)
+
+    if context:
+        context['company_info'] = company_info
         template_name = 'kaliroboda/dashbord.html'
     else:
         # in case the fetch was not successful
+        context = {'error': 'Error 502',
+                   'message': 'Company info could not be fetched right now, please refresh or contact technician'}
         template_name = 'kaliroboda/error.html'
     return render(request=request, template_name=template_name, context=context)
 
 
 def faqs(request):
     faqs = FrequentlyAskedQuestion.objects.all()
-    context = {'faqs': faqs}
+    context = {'faqs': faqs, 'company_info': company_info}
     template_name = 'kaliroboda/faqs.html'
     return render(request=request, template_name=template_name, context=context)
 
 
 def pageNotFound(request, exception):
-    context = {}
+    context = {'company_info': company_info}
     template_name = 'kaliroboda/404.html'
     return render(request=request, template_name=template_name, context=context)
 
 
 def serverError(request):
-    context = {}
+    context = {'company_info': company_info}
     template_name = 'kaliroboda/500.html'
     return render(request=request, template_name=template_name, context=context)
 
@@ -85,7 +102,7 @@ def export_csv(request):
             writer.writerow(member)
 
     else:
-        context = {}
+        context = {'company_info': company_info}
         template_name = 'kaliroboda/export.html'
         return render(request=request, template_name=template_name, context=context)
 

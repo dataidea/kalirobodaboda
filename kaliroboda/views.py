@@ -92,6 +92,7 @@ def serverError(request):
 
 def export_csv(request):
     table = request.GET.get('table')
+    company_info = fetchCompanyInfo()
     response = HttpResponse(content_type='text/csv')
 
     if table == 'members':

@@ -32,3 +32,11 @@ class FrequentlyAskedQuestion(models.Model):
 
     def __str__(self):
         return self.question
+    
+
+class Leader(models.Model):
+    first_name = models.CharField(max_length=25)
+    last_name = models.CharField(max_length=25)
+    title = models.CharField(max_length=50)
+    display_picture = models.ImageField(
+        default='display_pictures/smily.jpg', upload_to='display_pictures')

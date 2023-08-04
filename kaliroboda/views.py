@@ -2,6 +2,7 @@ import csv
 from accounts.models import Member
 from django.shortcuts import render
 from django.http import HttpResponse
+from companyinfo.models import Leader
 from companyinfo.models import Service
 from companyinfo.models import CompanyInfo
 from companyinfo.models import FrequentlyAskedQuestion
@@ -43,10 +44,11 @@ def getStats(request):
 
 
 def home(request):
-    company_info = fetchCompanyInfo()
     services = Service.objects.all()
+    company_info = fetchCompanyInfo()
+    leaders = Leader.objects.all()
     context = {'title': 'Home',
-               'company_info': company_info, 'services': services, }
+               'company_info': company_info, 'services': services, 'leaders': leaders}
     template_name = 'kaliroboda/home.html'
     return render(request=request, template_name=template_name, context=context)
 

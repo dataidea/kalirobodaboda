@@ -17,13 +17,15 @@ class MemberAdmin(admin.ModelAdmin):
         response['Content-Disposition'] = 'attachment; filename="members.csv"'
 
         writer = csv.writer(response)
-        writer.writerow(['first_name', 'last_name', 'email', 'title', 'gender', 'phone_number', 'display_picture', 'district', 'village', 'stage', 'card_id', 'issue_date', 'expiry_date'])
+        writer.writerow(['first_name', 'last_name', 'email', 'title', 'gender', 'phone_number',
+                        'display_picture', 'district', 'village', 'stage', 'card_id', 'issue_date', 'expiry_date'])
 
         for member in queryset:
-            writer.writerow([member.first_name, member.last_name, member.email, member.title, member.gender, member.phone_number, member.display_picture, member.district, member.village, member.stage, member.card_id, member.issue_date, member.expiry_date])
+            writer.writerow([member.first_name, member.last_name, member.email, member.title, member.gender, member.phone_number,
+                            member.display_picture, member.district, member.village, member.stage, member.card_id, member.issue_date, member.expiry_date])
 
         return response
-    
+
     import_members.short_description = "Import selected members to CSV"
 
 

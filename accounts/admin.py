@@ -12,6 +12,8 @@ class MemberAdmin(admin.ModelAdmin):
     list_display = ('card_id', 'first_name', 'last_name', 'title',
                     'stage', 'village', 'district', 'phone_number')
 
+    list_filter = ['title', 'status', 'stage', 'village', 'district']
+
     def import_members(modeladmin, request, queryset):
         response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = 'attachment; filename="members.csv"'

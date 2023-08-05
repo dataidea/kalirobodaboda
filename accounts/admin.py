@@ -2,7 +2,6 @@ import csv
 from .models import Member
 from django.contrib import admin
 from django.http import HttpResponse
-from datetime import datetime
 
 
 # Custom MemberAdmin to display specific attributes
@@ -33,7 +32,3 @@ class MemberAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(Member, MemberAdmin)
-
-# modify admin
-admin.site.site_header = "Kaliro Boda Association"
-admin.site.site_title = "Kaliro Boda Association Admin"

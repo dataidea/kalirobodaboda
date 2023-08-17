@@ -1,2 +1,5 @@
 windmill-dashboard-master
 tailwind
+company_info/__pycache__
+accounts/__pycache__
+db.sqlite3

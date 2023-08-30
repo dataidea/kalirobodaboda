@@ -1,0 +1,22 @@
+{% extends 'kaliroboda/base.html'%} {% block content %}
+<section class="faq p-6 h-full overflow-y-auto">
+  <h2 class="my-6 text-3xl font-bold text-gray-700 dark:text-gray-200">
+    Frequently Asked Questions
+  </h2>
+  <div class="grid gap-6 md:grid-cols-2">
+    {% if faqs%} {% for faq in faqs%}
+    <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+      <h4 class="mb-2 font-semibold text-gray-600 dark:text-gray-300">
+        {{faq.question}}
+      </h4>
+      <p class="text-gray-600 dark:text-gray-400">{{faq.answer}}</p>
+    </div>
+    {% endfor %} {% else %}
+    <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+      <p class="text-gray-600 dark:text-gray-400">No faqs found!</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+{%endblock%}

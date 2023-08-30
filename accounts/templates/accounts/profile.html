@@ -1,0 +1,164 @@
+{% extends 'kaliroboda/base.html'%} {% block content%}
+<main class="p-4 pb-16 overflow-y-auto">
+  <form
+    action=""
+    method="post"
+    enctype="multipart/form-data"
+    class="container px-6 mx-auto grid"
+  >
+    {% csrf_token %}
+
+    <div
+      class="pt-2 text-center border border-yellow-500 min-w-0 p-4 bg-yellow-200 rounded-lg shadow-xs dark:bg-yellow-200"
+    >
+      <div class="flex flex-col space-y-2 mb-4 font-semibold text-yellow-600">
+        <i class="fa-solid fa-beat-fade fa-triangle-exclamation text-3xl"></i>
+        <h4>Notice!</h4>
+      </div>
+      <p class="text-yellow-600">
+        You cannot change account info, contact admin for help.
+      </p>
+    </div>
+    <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+      Member Profile
+    </h2>
+    <div class="py-5">
+      <img
+        class="m-auto object-cover w-[10rem] h-[10rem] rounded"
+        src="{{member_profile.display_picture.url}}"
+        alt=""
+        aria-hidden="true"
+      />
+    </div>
+    <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
+      <label class="block py-2 text-sm">
+        <span class="text-gray-700 dark:text-gray-400">First Name</span>
+        <input
+          class="p-2 border rounded block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+          placeholder="Jane Doe"
+          name="first_name"
+          value="{{member_profile.first_name}}"
+          required
+          disabled
+        />
+      </label>
+      <label class="block py-2 text-sm">
+        <span class="text-gray-700 dark:text-gray-400">Last Name</span>
+        <input
+          class="p-2 border rounded block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+          placeholder="Jane Doe"
+          name="last_name"
+          value="{{member_profile.last_name}}"
+          required
+          disabled
+        />
+      </label>
+      <label class="block py-2 text-sm">
+        <span class="text-gray-700 dark:text-gray-400">Email</span>
+        <input
+          class="p-2 border rounded block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+          placeholder="Jane Doe"
+          name="email"
+          value="{{member_profile.email}}"
+          disabled
+        />
+      </label>
+      </label>
+      <label class="block text-sm py-2">
+        <span class="text-gray-700 dark:text-gray-400">Gender</span>
+        <input
+          class="p-2 rounded border block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+          placeholder="gender"
+          type="text"
+          name="membername"
+          value="{{member_profile.gender}}"
+          required
+          disabled
+        />
+      </label>
+      <label class="block text-sm py-2">
+        <span class="text-gray-700 dark:text-gray-400">Stage</span>
+        <input
+          class="p-2 rounded border block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+          placeholder=""
+          type="text"
+          name="membername"
+          value="{{member_profile.stage}}"
+          required
+          disabled
+        />
+      </label>
+      <label class="block text-sm py-2">
+        <span class="text-gray-700 dark:text-gray-400">Phone Number</span>
+        <input
+          class="p-2 rounded border block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+          placeholder=""
+          type="text"
+          name="membername"
+          value="{{member_profile.phone_number}}"
+          required
+          disabled
+        />
+      </label>
+      <label class="block text-sm py-2">
+        <span class="text-gray-700 dark:text-gray-400">Card ID</span>
+        <input
+          class="p-2 rounded border block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+          placeholder=""
+          type="text"
+          name="membername"
+          value="{{member_profile.card_id}}"
+          required
+          disabled
+        />
+      </label>
+      <label class="block text-sm py-2">
+        <span class="text-gray-700 dark:text-gray-400">Card Issue Date</span>
+        <input
+          class="p-2 rounded border block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+          placeholder=""
+          type="text"
+          name="membername"
+          value="{{member_profile.issue_date}}"
+          required
+          disabled
+        />
+      </label>
+      <label class="block text-sm py-2">
+        <span class="text-gray-700 dark:text-gray-400">Card Expiry Date</span>
+        <input
+          class="p-2 rounded border block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+          placeholder=""
+          type="text"
+          name="membername"
+          value="{{member_profile.expiry_date}}"
+          required
+          disabled
+        />
+      </label>
+      <div class="flex mt-6 text-sm">
+        <label class="flex items-center dark:text-gray-400">
+          <input
+            type="checkbox"
+            required
+            disabled
+            class="text-purple-600 form-checkbox focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray"
+          />
+          <span class="ml-2">
+            I agree to the
+            <span class="underline">privacy policy</span>
+          </span>
+        </label>
+      </div>
+    </div>
+    <div>
+      <!-- <button
+        type="submit"
+        class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple"
+      >
+        Regular
+      </button> -->
+    </div>
+  </form>
+</main>
+{% endblock %}

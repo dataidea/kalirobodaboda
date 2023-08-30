@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "kalirobodaboda"
+version = "0.1.0"
+description = "Kaliro boda boda association management system"
+authors = ["jumashafara <jumashafara0@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "4.0.1"
+pillow = "^10.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
